@@ -1,4 +1,5 @@
 import React from 'react';
+import IconeCard from './IconeCard';
 
 const deck = [
     { question: "O que é JSX?", answer: "Uma extensão de linguagem do JavaScript" },
@@ -15,15 +16,34 @@ function comparador() {
 	return Math.random() - 0.5; 
 }
 
-deck.sort(comparador)
+deck.sort(comparador);
 
-function computarResposta ({setAnswered, answered}) {
-    setAnswered (answered += 1)
-}
-
-function Respostas ({ position }) {
+function Respostas ({ position, setAnswered, answered, setStatus, setIcones, icones }) {
 
     const [vira, setVira] = React.useState('desvirada');
+
+    function clique() {
+        setAnswered(answered += 1);
+    }
+
+    function errou() {
+        clique();
+        setStatus("flashCard errou")
+        setIcones("close-circle")
+        console.log(icones)
+    }
+    function lembrou() {
+        clique();
+        setStatus("flashCard lembrou")
+        setIcones("help-circle")
+        console.log(icones)
+    }
+    function zap() {
+        clique();
+        setStatus("flashCard zap")
+        setIcones("checkmark-circle")
+        console.log(icones)
+    }
 
     if(vira === 'desvirada') {
         return (
@@ -37,9 +57,9 @@ function Respostas ({ position }) {
         <div className="perguntar">
             {deck[position].answer}
             <div>
-                <div className="selecionar" onClick={computarResposta}>Não lembrei</div>
-                <div className="selecionar" onClick={computarResposta}>Quase não lembrei</div>
-                <div className="selecionar" onClick={computarResposta}>Zap!</div>
+                <div className="selecionar red" onClick={errou}>Não lembrei</div>
+                <div className="selecionar orange" onClick={lembrou}>Quase não lembrei</div>
+                <div className="selecionar green" onClick={zap}>Zap!</div>
             </div>
         </div>
     )
@@ -49,6 +69,7 @@ function Respostas ({ position }) {
 export default function Statement({ card, position, setAnswered, answered }) {
 
     const [status, setStatus] = React.useState("flashCard");
+    const [icones, setIcones] = React.useState("play-outline")
 
 
     if (status === "flashCard") {
@@ -59,9 +80,15 @@ export default function Statement({ card, position, setAnswered, answered }) {
             </div>
         )
     }
-    
+    if (status === "statement") {
+        return (
+            <Respostas position={position} setAnswered={setAnswered} answered={answered} setStatus={setStatus} setIcones={setIcones} icones={icones} />
+        )
+    }
     return (
-        <Respostas position={position} setAnswered={setAnswered} answered={answered} />
+        <div className={status}>
+            <span>Pergunta {card}</span>
+            <IconeCard icones={icones} />
+        </div>
     )
-
 }

@@ -126,16 +126,31 @@ ion-icon {
     color: white;
 }
 
-.selecionar:nth-child(1) {
+.red {
     background-color: #FF3030;
 }
 
-.selecionar:nth-child(2) {
+.orange {
     background-color: #FF922E;
 }
 
-.selecionar:nth-child(3) {
+.green {
     background-color: #2FBE34;
+}
+
+.errou {
+    color: #FF3030;
+    text-decoration: line-through;
+}
+
+.lembrou {
+    color: #FF922E;
+    text-decoration: line-through;
+}
+
+.zap {
+    color: #2FBE34;
+    text-decoration: line-through;
 }
 
 .footerContainer {
