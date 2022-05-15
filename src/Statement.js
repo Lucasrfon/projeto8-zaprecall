@@ -1,5 +1,4 @@
-import React from 'react';
-import IconeCard from './IconeCard';
+import React from "react";
 
 const deck = [
     { question: "O que é JSX?", answer: "Uma extensão de linguagem do JavaScript" },
@@ -18,31 +17,29 @@ function comparador() {
 
 deck.sort(comparador);
 
-function Respostas ({ position, setAnswered, answered, setStatus, setIcones, icones }) {
+function Respostas ({ position, setAnswered, answered, setListaIcones, listaIcones, setStatus, setIcone, icone}) {
 
     const [vira, setVira] = React.useState('desvirada');
 
     function clique() {
         setAnswered(answered += 1);
+        setListaIcones([...listaIcones, icone])
     }
-
+    
     function errou() {
         clique();
-        setStatus("flashCard errou")
-        setIcones("close-circle")
-        console.log(icones)
+        setStatus("flashCard errou");
+        setIcone("close-circle");
     }
     function lembrou() {
         clique();
-        setStatus("flashCard lembrou")
-        setIcones("help-circle")
-        console.log(icones)
+        setStatus("flashCard lembrou");
+        setIcone("help-circle")
     }
     function zap() {
         clique();
         setStatus("flashCard zap")
-        setIcones("checkmark-circle")
-        console.log(icones)
+        setIcone("checkmark-circle");
     }
 
     if(vira === 'desvirada') {
@@ -66,29 +63,28 @@ function Respostas ({ position, setAnswered, answered, setStatus, setIcones, ico
 }
 
 
-export default function Statement({ card, position, setAnswered, answered }) {
-
+export default function Statement({position, setAnswered, answered, setListaIcones, listaIcones }) {
     const [status, setStatus] = React.useState("flashCard");
-    const [icones, setIcones] = React.useState("play-outline")
+    const [icone, setIcone] = React.useState("")
 
 
     if (status === "flashCard") {
         return (
             <div className={status} onClick={() => setStatus("statement")}>
-                <span>Pergunta {card}</span>
+                <span>Pergunta {position + 1}</span>
                 <ion-icon name="play-outline"></ion-icon>
             </div>
         )
     }
     if (status === "statement") {
         return (
-            <Respostas position={position} setAnswered={setAnswered} answered={answered} setStatus={setStatus} setIcones={setIcones} icones={icones} />
+            <Respostas position={position} setAnswered={setAnswered} answered={answered} setListaIcones={setListaIcones} listaIcones={listaIcones} setStatus={setStatus} setIcone={setIcone} icone={icone} />
         )
     }
     return (
         <div className={status}>
-            <span>Pergunta {card}</span>
-            <IconeCard icones={icones} />
+            <span>Pergunta {position + 1}</span>
+            <ion-icon name={icone}></ion-icon>
         </div>
     )
 }

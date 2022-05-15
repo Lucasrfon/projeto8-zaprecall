@@ -8,7 +8,6 @@ export default function HomePage ({setScreen}) {
             <img src="./Imagens/logo.png" alt="Logo" />
             <h1>ZapRecall</h1>
             <button onClick={() => setScreen('MainPage')}>Iniciar Recall!</button>
-        </div>
-        
+        </div>  
     )
 }
