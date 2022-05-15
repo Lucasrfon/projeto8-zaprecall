@@ -1,7 +1,7 @@
-export default function Footer () {
+export default function Footer ({answered}) {
     return (
         <div className="footerContainer">
-            <span>0/8 CONCLUÍDOS</span>
+            <span>{answered}/8 CONCLUÍDOS</span>
         </div>
     )
 }
