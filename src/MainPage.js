@@ -10,7 +10,7 @@ function Statements () {
             <Statement card="4" position="3" />
             <Statement card="5" position="4" />
             <Statement card="6" position="5" />
-            <Statement card="7" position="6" />
+            <Statement card="7" position="6" /> 
             <Statement card="8" position="7" />
         </>
     )
