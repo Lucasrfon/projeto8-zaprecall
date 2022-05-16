@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import Footer from "./Footer";
 import Statement from "./Statement";
 
-export default function MainPage () {
+export default function MainPage ({setScreen}) {
     const [answered, setAnswered] = useState(0)
     const [listaIcones, setListaIcones] = useState([])
     const [erro, setErro] = useState(false)
@@ -21,7 +21,7 @@ export default function MainPage () {
             <Statement position={5} setAnswered={setAnswered} answered={answered} setListaIcones={setListaIcones} listaIcones={listaIcones} setErro={setErro} />
             <Statement position={6} setAnswered={setAnswered} answered={answered} setListaIcones={setListaIcones} listaIcones={listaIcones} setErro={setErro} />
             <Statement position={7} setAnswered={setAnswered} answered={answered} setListaIcones={setListaIcones} listaIcones={listaIcones} setErro={setErro} />
-            <Footer answered={answered} listaIcones={listaIcones} erro={erro} />
+            <Footer setScreen={setScreen} answered={answered} listaIcones={listaIcones} erro={erro} />
         </div>
     )
 }

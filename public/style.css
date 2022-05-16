@@ -184,3 +184,13 @@ ion-icon {
 .footerContainer > :first-child {
     display: flex;
 }
+
+.footerContainer button {
+    margin-top: 20px;
+    width: 170px;
+    height: 32px;
+    font-size: 14px;
+    background-color: #FB6B6B;
+    color: white;
+    border: none;
+}
