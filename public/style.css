@@ -194,3 +194,15 @@ ion-icon {
     color: white;
     border: none;
 }
+
+ion-icon[name="close-circle"] {
+    color: #FF3030;
+}
+
+ion-icon[name="help-circle"] {
+    color: #FF922E;
+}
+
+ion-icon[name="checkmark-circle"] {
+    color: #2FBE34;
+}
