@@ -4,12 +4,13 @@ import MainPage from './MainPage';
 
 export default function App () {
     const [screen, setScreen] = React.useState('HomePage')
+    const [meta, setMeta] = React.useState('');
 
     return (
 
         <>
 
-        {screen === 'HomePage' ? <HomePage setScreen={setScreen} /> : <MainPage setScreen={setScreen} />}
+        {screen === 'HomePage' ? <HomePage setScreen={setScreen} setMeta={setMeta} /> : <MainPage setScreen={setScreen} meta={meta} />}
 
         </>
     )

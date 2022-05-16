@@ -15,10 +15,10 @@ function TipoFooter ({answered, listaIcones, image, result, text, setScreen}) {
     )
 }
 
-export default function Footer ({ answered, listaIcones, erro, setScreen }) {
+export default function Footer ({ answered, listaIcones, erro, setScreen, meta, qtdZap }) {
     
     if(answered === 8) {
-        if(erro) {
+        if(erro || meta > qtdZap) {
             return <TipoFooter image={"./Imagens/sad.png"} result={"Putz..."} text={"Ainda faltam alguns... Mas não desanime!"} answered={answered} listaIcones={listaIcones} setScreen={setScreen} />
         }
         return <TipoFooter image={"./Imagens/party.png"} result={"Parabéns!"} text={"Você não esqueceu de nenhum flashcard!"} answered={answered} listaIcones={listaIcones} setScreen={setScreen} />

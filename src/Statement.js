@@ -17,7 +17,7 @@ function comparador() {
 
 deck.sort(comparador);
 
-function Respostas ({ position, setAnswered, answered, setListaIcones, listaIcones, setStatus, setIcone, icone, setErro}) {
+function Respostas ({ position, setAnswered, answered, setListaIcones, listaIcones, setStatus, setIcone, setErro, setQtdZap, qtdZap}) {
 
     const [vira, setVira] = React.useState('desvirada');
 
@@ -42,7 +42,8 @@ function Respostas ({ position, setAnswered, answered, setListaIcones, listaIcon
         clique();
         setStatus("flashCard zap");
         setIcone("checkmark-circle");
-        setListaIcones([...listaIcones, "checkmark-circle"])
+        setListaIcones([...listaIcones, "checkmark-circle"]);
+        setQtdZap(qtdZap += 1)
     }
 
     if(vira === 'desvirada') {
@@ -66,7 +67,7 @@ function Respostas ({ position, setAnswered, answered, setListaIcones, listaIcon
 }
 
 
-export default function Statement({position, setAnswered, answered, setListaIcones, listaIcones, setErro }) {
+export default function Statement({position, setAnswered, answered, setListaIcones, listaIcones, setErro, setQtdZap, qtdZap }) {
     const [status, setStatus] = React.useState("flashCard");
     const [icone, setIcone] = React.useState("")
 
@@ -81,7 +82,7 @@ export default function Statement({position, setAnswered, answered, setListaIcon
     }
     if (status === "statement") {
         return (
-            <Respostas position={position} setAnswered={setAnswered} answered={answered} setListaIcones={setListaIcones} listaIcones={listaIcones} setStatus={setStatus} setIcone={setIcone} icone={icone} setErro={setErro} />
+            <Respostas position={position} setAnswered={setAnswered} answered={answered} setListaIcones={setListaIcones} listaIcones={listaIcones} setStatus={setStatus} setIcone={setIcone} icone={icone} setErro={setErro} setQtdZap={setQtdZap} qtdZap={qtdZap}  />
         )
     }
     return (
