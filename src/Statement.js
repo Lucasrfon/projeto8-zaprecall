@@ -17,29 +17,32 @@ function comparador() {
 
 deck.sort(comparador);
 
-function Respostas ({ position, setAnswered, answered, setListaIcones, listaIcones, setStatus, setIcone, icone}) {
+function Respostas ({ position, setAnswered, answered, setListaIcones, listaIcones, setStatus, setIcone, icone, setErro}) {
 
     const [vira, setVira] = React.useState('desvirada');
 
     function clique() {
         setAnswered(answered += 1);
-        setListaIcones([...listaIcones, icone])
     }
     
     function errou() {
         clique();
         setStatus("flashCard errou");
         setIcone("close-circle");
+        setListaIcones([...listaIcones, "close-circle"])
+        setErro(true);
     }
     function lembrou() {
         clique();
         setStatus("flashCard lembrou");
-        setIcone("help-circle")
+        setIcone("help-circle");
+        setListaIcones([...listaIcones, "help-circle"])
     }
     function zap() {
         clique();
-        setStatus("flashCard zap")
+        setStatus("flashCard zap");
         setIcone("checkmark-circle");
+        setListaIcones([...listaIcones, "checkmark-circle"])
     }
 
     if(vira === 'desvirada') {
@@ -63,7 +66,7 @@ function Respostas ({ position, setAnswered, answered, setListaIcones, listaIcon
 }
 
 
-export default function Statement({position, setAnswered, answered, setListaIcones, listaIcones }) {
+export default function Statement({position, setAnswered, answered, setListaIcones, listaIcones, setErro }) {
     const [status, setStatus] = React.useState("flashCard");
     const [icone, setIcone] = React.useState("")
 
@@ -78,7 +81,7 @@ export default function Statement({position, setAnswered, answered, setListaIcon
     }
     if (status === "statement") {
         return (
-            <Respostas position={position} setAnswered={setAnswered} answered={answered} setListaIcones={setListaIcones} listaIcones={listaIcones} setStatus={setStatus} setIcone={setIcone} icone={icone} />
+            <Respostas position={position} setAnswered={setAnswered} answered={answered} setListaIcones={setListaIcones} listaIcones={listaIcones} setStatus={setStatus} setIcone={setIcone} icone={icone} setErro={setErro} />
         )
     }
     return (
